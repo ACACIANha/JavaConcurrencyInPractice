@@ -1,4 +1,4 @@
-package concurrency.exercise.ch0_2_excutor;
+package concurrency.exercise.ch0.ch0_2_excutor;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

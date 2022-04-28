@@ -1,4 +1,4 @@
-package concurrency.exercise.ch1_3_sum100;
+package concurrency.exercise.ch1.ch1_3_sum100;
 
 import lombok.ToString;
 

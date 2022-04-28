@@ -1,4 +1,4 @@
-package concurrency.exercise.ch0_0_interface;
+package concurrency.exercise.ch0.ch0_0_interface;
 
 public class ThreadTest {
 

@@ -1,4 +1,4 @@
-package concurrency.exercise.ch0_3_exercise;
+package concurrency.exercise.ch0.ch0_3_exercise;
 
 public class RunnableDemo implements Runnable {
 

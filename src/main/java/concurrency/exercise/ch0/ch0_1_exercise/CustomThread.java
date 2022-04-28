@@ -1,4 +1,4 @@
-package concurrency.exercise.ch0_1_exercise;
+package concurrency.exercise.ch0.ch0_1_exercise;
 
 public class CustomThread implements Runnable {
 

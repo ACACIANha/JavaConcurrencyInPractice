@@ -1,4 +1,4 @@
-package concurrency.exercise.ch0_2_excutor;
+package concurrency.exercise.ch0.ch0_2_excutor;
 
 import java.util.Random;
 import java.util.concurrent.ExecutorService;

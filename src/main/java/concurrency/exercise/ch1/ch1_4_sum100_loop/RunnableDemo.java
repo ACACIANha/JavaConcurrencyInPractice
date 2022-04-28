@@ -1,4 +1,4 @@
-package concurrency.exercise.ch1_4_sum100_loop;
+package concurrency.exercise.ch1.ch1_4_sum100_loop;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

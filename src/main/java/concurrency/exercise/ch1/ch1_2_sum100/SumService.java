@@ -1,4 +1,4 @@
-package concurrency.exercise.ch1_2_sum100;
+package concurrency.exercise.ch1.ch1_2_sum100;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

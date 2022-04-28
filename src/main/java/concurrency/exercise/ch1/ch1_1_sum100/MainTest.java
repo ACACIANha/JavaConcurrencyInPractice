@@ -1,4 +1,4 @@
-package concurrency.exercise.ch1_1_sum100;
+package concurrency.exercise.ch1.ch1_1_sum100;
 
 public class MainTest {
 
