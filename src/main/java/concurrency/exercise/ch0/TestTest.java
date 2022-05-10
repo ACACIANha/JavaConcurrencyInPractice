@@ -1,15 +1,23 @@
 package concurrency.exercise.ch0;
 
 import ch.qos.logback.classic.Level;
+import concurrency.exercise.ch2.exercise3.Person;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.RandomUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.stream.IntStream;
 
 @Slf4j
 public class TestTest {
 
 	public static void main( String[] args ) {
+
+		IntStream.range( 0, 5 ).forEach( i -> {
+			log.info( "{}", i );
+		} );
 
 		log.trace( "trace" );
 
