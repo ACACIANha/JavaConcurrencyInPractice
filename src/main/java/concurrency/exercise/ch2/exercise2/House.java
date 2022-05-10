@@ -1,4 +1,4 @@
-package concurrency.exercise.ch2.house;
+package concurrency.exercise.ch2.exercise2;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicReference;
 @Slf4j
 public class House extends Thread {
 
-	private final double sleepTimeSeconds = 0.2;
+	private final double sleepTimeSeconds = 3;
 	private final long sleepTimeMilli = ( long ) ( 1000 * sleepTimeSeconds );
 
 	private final Queue< Person > personQueue;
@@ -58,6 +58,7 @@ public class House extends Thread {
 			Thread.currentThread().sleep( sleepTimeMilli );
 		}
 		log.info( "all person work is done" );
+		service.shutdown();
 	}
 
 	void roomProcess() {

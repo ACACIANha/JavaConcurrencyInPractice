@@ -9,13 +9,15 @@
         </filter>
         <encoder>
             <charset>UTF-8</charset>
-            <pattern>%d %green(%-5level) [%30.30thread] %30.30logger{5} - %msg%n</pattern>
+            <!--<pattern>%d %green(%-5level) [%30.30thread] %30.30logger{5} - %msg%n</pattern>-->
             <!--<pattern>%d %-5level [%30.30thread] %30.30logger{5} - %msg%n</pattern>-->
             <!--<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>-->
+            <!--<pattern>%msg%n</pattern>-->
+            <pattern>[%10.10thread] - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <logger name="concurrency" level="error">
+    <logger name="concurrency" level="debug">
     </logger>
 
     <root level="INFO">

@@ -1,4 +1,4 @@
-package concurrency.exercise.ch2.house;
+package concurrency.exercise.ch2.exercise2;
 
 import lombok.Getter;
 
