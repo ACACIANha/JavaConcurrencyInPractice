@@ -49,11 +49,15 @@ public class Room implements Runnable {
 
 		while ( !Thread.currentThread().isInterrupted() ) {
 
-			if ( null != aWorkPerson.get() ) { //Objects.nonNull( workPerson )
-				aWorkPerson.get().decreasePoint( decreasePoint );
-				deadCheck();
-			}
+			this.process();
 			TimeUnit.SECONDS.sleep( 1 );
+		}
+	}
+
+	private void process() {
+		if ( null != aWorkPerson.get() ) { //Objects.nonNull( workPerson )
+			aWorkPerson.get().decreasePoint( decreasePoint );
+			deadCheck();
 		}
 	}
 
