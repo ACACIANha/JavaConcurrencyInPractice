@@ -20,6 +20,8 @@ dependencies {
     implementation 'org.slf4j:slf4j-api:1.7.30'
     implementation 'ch.qos.logback:logback-classic:0.9.26'
 
+    implementation 'io.netty:netty-all:4.1.77.Final'
+
     //
     implementation 'org.projectlombok:lombok:1.18.16'
     annotationProcessor 'org.projectlombok:lombok:1.18.16'
