@@ -14,4 +14,10 @@ public enum Direction {
 	Direction( int moveDir ) {
 		this.moveDir = moveDir;
 	}
+
+
+	@Override
+	public String toString() {
+		return String.format( "%-4s", name() );
+	}
 }

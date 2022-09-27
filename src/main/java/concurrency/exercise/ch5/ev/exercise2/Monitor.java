@@ -27,7 +27,7 @@ public class Monitor implements Runnable {
 
 			String prefix = "{} 층 | ";
 			for ( int j = 0; j < elevators.size(); ++j ) {
-				prefix += " {} ";
+				prefix += " [ {} ] ";
 			}
 
 			log.info( prefix, String.format( "%2d", i ),
@@ -39,8 +39,11 @@ public class Monitor implements Runnable {
 
 	private void printElevator() {
 
-		log.info( " elevator1 : {} |  elevator2 : {} |  elevator3 : {}",
-				elevators.get( 0 ).customString(), elevators.get( 1 ).customString(), elevators.get( 2 ).customString() );
+		for ( int i = 0; i < elevators.size(); ++i ) {
+			log.info( " {}호기 : {}", i + 1, elevators.get( i ).customString() );
+		}
+//		log.info( " elevator1 : {} |  elevator2 : {} |  elevator3 : {}",
+//				elevators.get( 0 ).customString(), elevators.get( 1 ).customString(), elevators.get( 2 ).customString() );
 	}
 
 	private void printPassengers() {
