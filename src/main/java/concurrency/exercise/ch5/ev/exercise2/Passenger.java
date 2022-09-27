@@ -12,7 +12,7 @@ public class Passenger {
 	static int staticIndex = 0;
 
 	int uniqueIndex;
-	String name;
+	//	String name;
 	int startFloor;
 	int destinationFloor;
 

@@ -2,37 +2,45 @@ package concurrency.exercise.ch5.ev.exercise2;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
 @Slf4j
 public class Monitor implements Runnable {
 
-	private final Elevator elevator1;
-	private final Elevator elevator2;
-	private final Elevator elevator3;
+	private final List< Elevator > elevators;
 	private final BlockingQueue< Passenger > passengers;
 
-	public Monitor( Elevator elevator1, Elevator elevator2, Elevator elevator3, BlockingQueue< Passenger > passengers ) {
-		this.elevator1 = elevator1;
-		this.elevator2 = elevator2;
-		this.elevator3 = elevator3;
+	public static Monitor instance( List< Elevator > elevators, BlockingQueue< Passenger > passengers ) {
+
+		return new Monitor( elevators, passengers );
+	}
+
+	private Monitor( List< Elevator > elevators, BlockingQueue< Passenger > passengers ) {
+		this.elevators = elevators;
 		this.passengers = passengers;
 	}
 
 	private void printFloor() {
 
 		for ( int i = 10; i > 0; --i ) {
-			log.info( "{} 층 | {}  {}  {}",
-					String.format( "%2d", i ),
-					i == elevator1.getCurrentFloor() ? elevator1.getCurrentDirection() : "    ",
-					i == elevator2.getCurrentFloor() ? elevator2.getCurrentDirection() : "    ",
-					i == elevator3.getCurrentFloor() ? elevator3.getCurrentDirection() : "    " );
+
+			String prefix = "{} 층 | ";
+			for ( int j = 0; j < elevators.size(); ++j ) {
+				prefix += " {} ";
+			}
+
+			log.info( prefix, String.format( "%2d", i ),
+					i == elevators.get( 0 ).getCurrentFloor() ? elevators.get( 0 ).getCurrentDirection() : "\t",
+					i == elevators.get( 1 ).getCurrentFloor() ? elevators.get( 1 ).getCurrentDirection() : "\t",
+					i == elevators.get( 2 ).getCurrentFloor() ? elevators.get( 2 ).getCurrentDirection() : "\t" );
 		}
 	}
 
 	private void printElevator() {
 
-		log.info( " elevator1 : {} |  elevator2 : {} |  elevator1 : {}", elevator1.customString(), elevator2.customString(), elevator3.customString() );
+		log.info( " elevator1 : {} |  elevator2 : {} |  elevator3 : {}",
+				elevators.get( 0 ).customString(), elevators.get( 1 ).customString(), elevators.get( 2 ).customString() );
 	}
 
 	private void printPassengers() {

@@ -1,12 +1,16 @@
 package concurrency.exercise.ch5.ev.exercise2;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.*;
 
 public class TestMain {
 
 	public static void main( String[] args ) {
 
-		ScheduledExecutorService service = Executors.newScheduledThreadPool( 4 );
+		int elevatorCount = 3;
+
+		ScheduledExecutorService service = Executors.newScheduledThreadPool( elevatorCount + 1 );
 
 		BlockingQueue< Passenger > passengers = new ArrayBlockingQueue<>( 20 );
 
@@ -21,20 +25,19 @@ public class TestMain {
 		passengers.add( Passenger.instance( 1, 10 ) );
 		passengers.add( Passenger.instance( 1, 10 ) );
 		passengers.add( Passenger.instance( 1, 10 ) );
-//		passengers.add( Passenger.instance( 8, 2 ) );
-//		passengers.add( Passenger.instance( 1, 9 ) );
-//		passengers.add( Passenger.instance( 10, 2 ) );
 
-		Elevator elevator1 = Elevator.instance( 1, passengers );
-		Elevator elevator2 = Elevator.instance( 10, passengers );
-		Elevator elevator3 = Elevator.instance( 5, passengers );
+		List< Elevator > elevators = new ArrayList<>();
+		for ( int i = 0; i < elevatorCount; ++i ) {
+			elevators.add( Elevator.instance( ( int ) ( Math.random() * 10 ), passengers ) );
+		}
 
-		Monitor monitor = new Monitor( elevator1, elevator2, elevator3, passengers );
+		Monitor monitor = Monitor.instance( elevators, passengers );
 
 		int timePeriod = 1;
 		service.scheduleAtFixedRate( monitor, 0, timePeriod, TimeUnit.SECONDS );
-		service.scheduleAtFixedRate( elevator1, 1, timePeriod, TimeUnit.SECONDS );
-		service.scheduleAtFixedRate( elevator2, 1, timePeriod, TimeUnit.SECONDS );
-		service.scheduleAtFixedRate( elevator3, 1, timePeriod, TimeUnit.SECONDS );
+
+		for ( Elevator elevator : elevators ) {
+			service.scheduleAtFixedRate( elevator, 1, timePeriod, TimeUnit.SECONDS );
+		}
 	}
 }
