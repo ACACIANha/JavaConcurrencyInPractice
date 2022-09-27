@@ -1,23 +1,21 @@
 package concurrency.exercise.ch2.exercise3;
 
 import java.util.List;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.Queue;
 
 public class Host implements Runnable {
 
-	private final ConcurrentLinkedQueue< Person > personQueue;
+	private final Queue< Person > personQueue;
 	private final List< Room > rooms;
 
-	private Host( ConcurrentLinkedQueue< Person > personQueue, List< Room > roomTasks ) {
+	private Host( Queue< Person > personQueue, List< Room > roomTasks ) {
 		this.personQueue = personQueue;
 		this.rooms = roomTasks;
 
-		rooms.forEach( room -> {
-			room.enterPerson( personQueue.poll() );
-		} );
+		rooms.forEach( room -> room.enterPerson( personQueue.poll() ) );
 	}
 
-	public static Host newInstance( ConcurrentLinkedQueue< Person > personQueue, List< Room > roomTasks ) {
+	public static Host newInstance( Queue< Person > personQueue, List< Room > roomTasks ) {
 		return new Host( personQueue, roomTasks );
 	}
 

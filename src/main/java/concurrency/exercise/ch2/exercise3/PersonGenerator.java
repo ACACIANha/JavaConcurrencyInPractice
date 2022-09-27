@@ -3,18 +3,18 @@ package concurrency.exercise.ch2.exercise3;
 import lombok.SneakyThrows;
 import org.apache.commons.lang3.RandomUtils;
 
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.Queue;
 import java.util.concurrent.TimeUnit;
 
 public class PersonGenerator implements Runnable {
 
-	private final ConcurrentLinkedQueue< Person > personQueue;
+	private final Queue< Person > personQueue;
 
-	private PersonGenerator( ConcurrentLinkedQueue< Person > personQueue ) {
+	private PersonGenerator( Queue< Person > personQueue ) {
 		this.personQueue = personQueue;
 	}
 
-	public static PersonGenerator newInstance( ConcurrentLinkedQueue< Person > personQueue ) {
+	public static PersonGenerator newInstance( Queue< Person > personQueue ) {
 
 		return new PersonGenerator( personQueue );
 	}

@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Queue;
+import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -12,7 +14,7 @@ import java.util.concurrent.Executors;
 @Slf4j
 public class House extends Thread {
 
-	private final ConcurrentLinkedQueue< Person > personQueue;
+	private final Queue< Person > personQueue;
 	private final int roomSize;
 
 	private ExecutorService service;
@@ -23,7 +25,7 @@ public class House extends Thread {
 	private PersonGenerator generator;
 
 
-	private House( ConcurrentLinkedQueue< Person > personQueue, int roomSize ) {
+	private House( Queue< Person > personQueue, int roomSize ) {
 		this.personQueue = personQueue;
 		this.roomSize = roomSize;
 
@@ -45,7 +47,7 @@ public class House extends Thread {
 		generator = PersonGenerator.newInstance( personQueue );
 	}
 
-	public static House newInstance( ConcurrentLinkedQueue< Person > personQueue, int roomSize ) {
+	public static House newInstance( Queue< Person > personQueue, int roomSize ) {
 		return new House( personQueue, roomSize );
 	}
 

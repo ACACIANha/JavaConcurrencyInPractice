@@ -5,21 +5,21 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.List;
+import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
 public class Monitor implements Runnable {
 
-	private final ConcurrentLinkedQueue< Person > personQueue;
+	private final Queue< Person > personQueue;
 	private final List< Room > roomTasks;
 
 	private long elapseTime;
-	private long deltaTime;
 	private long prevTime;
 	private long currentTime;
 
-	private Monitor( ConcurrentLinkedQueue< Person > personQueue, List< Room > roomTasks ) {
+	private Monitor( Queue< Person > personQueue, List< Room > roomTasks ) {
 		this.personQueue = personQueue;
 		this.roomTasks = roomTasks;
 
@@ -28,7 +28,7 @@ public class Monitor implements Runnable {
 		this.currentTime = System.currentTimeMillis();
 	}
 
-	public static Monitor newInstance( ConcurrentLinkedQueue< Person > personQueue, List< Room > roomTasks ) {
+	public static Monitor newInstance( Queue< Person > personQueue, List< Room > roomTasks ) {
 
 		return new Monitor( personQueue, roomTasks );
 	}
@@ -53,8 +53,8 @@ public class Monitor implements Runnable {
 
 	private void timeProcess() {
 		this.currentTime = System.currentTimeMillis();
-		this.deltaTime = this.currentTime - this.prevTime;
-		this.elapseTime += this.deltaTime;
+		long deltaTime = this.currentTime - this.prevTime;
+		this.elapseTime += deltaTime;
 		log.info( "모니터 경과시간: {}", ( long ) ( this.elapseTime * 0.001 ) );
 		this.prevTime = this.currentTime;
 	}
