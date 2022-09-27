@@ -31,9 +31,9 @@ public class Monitor implements Runnable {
 			}
 
 			log.info( prefix, String.format( "%2d", i ),
-					i == elevators.get( 0 ).getCurrentFloor() ? elevators.get( 0 ).getCurrentDirection() : "\t",
-					i == elevators.get( 1 ).getCurrentFloor() ? elevators.get( 1 ).getCurrentDirection() : "\t",
-					i == elevators.get( 2 ).getCurrentFloor() ? elevators.get( 2 ).getCurrentDirection() : "\t" );
+					i == elevators.get( 0 ).getCurrentFloor() ? elevators.get( 0 ).getCurrentDirection() : "    ",
+					i == elevators.get( 1 ).getCurrentFloor() ? elevators.get( 1 ).getCurrentDirection() : "    ",
+					i == elevators.get( 2 ).getCurrentFloor() ? elevators.get( 2 ).getCurrentDirection() : "    " );
 		}
 	}
 
